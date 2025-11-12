@@ -138,7 +138,7 @@ To reproduce our results, you must first obtain access to the official MIMIC dat
 
 If you wish to compare against classical models (CAML, LAAT, MultiResCNN, etc.),
 refer to the official SIGIR 2023 repository:
-👉 [https://github.com/Edin-Sko/Automated-Medical-Coding-on-MIMIC-III-and-MIMIC-IV](https://github.com/Edin-Sko/Automated-Medical-Coding-on-MIMIC-III-and-MIMIC-IV)
+👉 [[https://github.com/Edin-Sko/Automated-Medical-Coding-on-MIMIC-III-and-MIMIC-IV](https://github.com/Edin-Sko/Automated-Medical-Coding-on-MIMIC-III-and-MIMIC-IV)](https://github.com/JoakimEdin/medical-coding-reproducibility)
 
 Their repo contains the original splits and evaluation scripts used for the benchmarks.
 
