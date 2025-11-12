@@ -143,8 +143,6 @@ refer to the official SIGIR 2023 repository:
 Their repo contains the original splits and evaluation scripts used for the benchmarks.
 
 ---
-
----
 ### 🚀 Model Training
 
 This command starts a **new training session** for the `plm_icd` model on the MIMIC-IV ICD-10 dataset, running on the first GPU.
