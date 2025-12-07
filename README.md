@@ -164,7 +164,67 @@ Reconstructed corpus-level statistics:
 | Documents Train / Val / Test (%) | 72.9 / 10.9 / 16.2               |
 | Notes with missing codes (%)     | 0.0 / 0.5 / 0.1 (Train/Val/Test) |
 
-### 3.4 MIMIC-IV-Full corpus statistics (extended split)
+
+Here is a separate section you can plug into the README for the full MIMIC-IV-Full setup.
+
+You can place it under Dataset Preparation as a new subsection.
+
+---
+
+### 3.4 MIMIC-IV-Full preprocessing (Nguyen et al.)
+
+For the full-scale MIMIC-IV-Full experiments (26,096 ICD-10 labels), we do not reuse the Edin et al. preprocessing. Instead, we follow the official pipeline from:
+
+Nguyen et al., “MIMIC-IV-ICD: A new benchmark for eXtreme MultiLabel Classification” and its public repository “MIMIC-IV-ICD-data-processing”. ([GitHub][1])
+
+We use their scripts and notebooks as-is to construct the benchmark dataset and standardized train/validation/test split.
+
+Directory layout (following the original repository):
+
+```text
+mimicdata/
+  physionet.org/
+    files/
+      mimic4_icd10/
+        ALL_CODES.csv
+        ALL_CODES_filtered.csv
+        disch_10_full.csv
+        disch_10_filtered.csv
+        notes_labeled.csv
+        *_hadm_ids.csv
+      mimic4_icd9/
+        ...
+```
+
+The MIMIC-IV raw files are downloaded from PhysioNet into `mimicdata/physionet.org`. The `mimic4_icd10` folder then contains both raw and processed CSV files used by the benchmark. ([GitHub][1])
+
+Key intermediate files for ICD-10 (full setting):
+
+| File name              | Role in our pipeline                                               |
+| ---------------------- | ------------------------------------------------------------------ |
+| ALL_CODES.csv          | Raw ICD-10 code list extracted from MIMIC-IV                       |
+| ALL_CODES_filtered.csv | Filtered ICD-10 label set used as the final label space            |
+| disch_10_full.csv      | Raw discharge summaries with ICD-10 codes                          |
+| disch_10_filtered.csv  | Filtered and cleaned discharge summaries used for modeling         |
+| notes_labeled.csv      | Joined table of notes and ICD-10 labels (multi-label instances)    |
+| *_hadm_ids.csv         | Predefined admission ID lists for train, validation, and test sets |
+
+To generate these files, we follow the original instructions from the Nguyen repository:
+
+1. Place the MIMIC-IV data under `mimicdata/physionet.org/` with the expected subdirectories.
+2. Add the base directory of the MIMIC-IV-ICD-data-processing repository to the Python path.
+3. Run all cells in the provided Jupyter notebooks
+
+   * `notebooks/dataproc_mimic_IV_exploration_icd10.ipynb`
+   * (and the corresponding ICD-9 notebook if needed)
+
+   These notebooks perform the full processing pipeline, including label filtering, document cleaning, and construction of the benchmark splits. ([GitHub][1])
+
+All MIMIC-IV-Full results reported in this repository use exactly this preprocessing and the official train/validation/test splits from Nguyen et al., ensuring direct comparability with the MIMIC-IV-ICD benchmark.
+
+[1]: https://github.com/thomasnguyen92/MIMIC-IV-ICD-data-processing "GitHub - thomasnguyen92/MIMIC-IV-ICD-data-processing"
+
+### 3.5 MIMIC-IV-Full corpus statistics (extended split)
 
 Extended experiments use the full ICD-10 label space:
 
