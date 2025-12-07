@@ -1,7 +1,7 @@
 # Mitigating Imbalance in ICD Coding: A Comprehensive Evaluation of Loss Functions and Threshold Optimization
 
 This repository provides the official implementation for the paper
-“A Comprehensive Study of Class-Sensitive Learning for Long-Tailed ICD Coding.”
+“Mitigating Imbalance in ICD Coding: A Comprehensive Evaluation of Loss Functions and Threshold Optimization.”
 
 We present a unified framework for evaluating class-sensitive loss functions and threshold optimization strategies for automated ICD-10 coding on long-tailed clinical datasets (MIMIC-IV and MIMIC-IV-Full).
 
