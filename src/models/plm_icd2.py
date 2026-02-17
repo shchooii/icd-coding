@@ -74,34 +74,8 @@ class PLMICD2(nn.Module):
         self.register_buffer("tail_idx", torch.tensor(tail_idx))
         self.num_classes = num_classes
         
-        # self.loss = torch.nn.BCEWithLogitsLoss()
-        
-        # self.loss = FocalLoss()
-        
-        # self.loss = Hill()
-        
-        # self.loss = AsymmetricLoss()
-        
-        # self.loss = MultiGrainedFocalLoss()
-        # self.loss.create_weight(cls_num_list)
-        
-        # self.loss = PriorFocalModifierLoss()
-        # self.loss.create_co_occurrence_matrix(co_occurrence_matrix)
-        # self.loss.create_weight(cls_num_list)
-        
-        # self.loss = ResampleLoss(
-        #     use_sigmoid    = True,
-        #     class_freq     = class_freq,
-        #     neg_class_freq = neg_class_freq,
-        #     reweight_func  ='rebalance',
-        # )
-        
         self.rlc = ReflectiveLabelCorrectorLoss(num_classes=num_classes, distribution=cls_num_list)
-        
-        # self.pfm = PriorFocalModifierLoss()
-        # self.pfm.create_co_occurrence_matrix(co_occurrence_matrix)
-        # self.pfm.create_weight(cls_num_list)
-        
+         
         self.mfm = MultiGrainedFocalLoss()
         self.mfm.create_weight(cls_num_list) 
         self.htb = HeadTailBalancerLoss(PFM=self.mfm)
@@ -110,11 +84,6 @@ class PLMICD2(nn.Module):
         loss_r = self.rlc(bal, labels)
         loss_m = self.mfm(bal, labels)          
         loss_b = self.htb(head, tail, bal, labels) 
-        # return loss_r
-        # return loss_b
-        # return self.lambda_r * loss_r + self.lambda_m * loss_m   
-        # return self.lambda_m * loss_m + self.lambda_b * loss_b
-        # return self.lambda_r * loss_r + self.lambda_b * loss_b
         return self.lambda_r * loss_r + self.lambda_m * loss_m + self.lambda_b * loss_b
 
     def get_loss(self, head, tail, bal, targets):
