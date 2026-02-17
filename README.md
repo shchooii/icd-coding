@@ -7,7 +7,7 @@ It focuses on:
 
 * Dataset preparation and standardized splits
 * Training and evaluation commands
-* Threshold tuning strategies (single / per-class / per-group)
+* Threshold tuning strategies (single / per-label / per-group)
 
 Figures and pretrained checkpoints are not included.
 
