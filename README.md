@@ -106,12 +106,12 @@ Supported strategies:
 
 * Fixed threshold (0.5)
 * Single global threshold
-* Per-class thresholds
+* Per-label thresholds
 * Per-group thresholds (head/medium/tail)
 
 You can switch strategies by changing **only** the function arguments: `type`, `average`, and `groups` (per-group only).
 
-> You can switch thresholding strategies by changing the function arguments—specifically `type` (single / per-class / per-class2 (w sanity checks) / per-group), `average` (micro vs. macro), and `groups` (only required for per-group tuning). No other code changes are needed.
+> You can switch thresholding strategies by changing the function arguments—specifically `type` (single / per-label / per-label2 (w sanity checks) / per-group), `average` (micro vs. macro), and `groups` (only required for per-group tuning). No other code changes are needed.
 
 Example:
 
