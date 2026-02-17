@@ -46,7 +46,7 @@ def f1_score_db_tuning(logits, targets, groups, average="micro", type="single"):
         best_db = dbs[f1_scores.argmax()]
         print(f"Best F1: {best_f1:.4f} at DB: {best_db:.4f}")
         return best_f1, best_db
-    if type == "per_class":
+    if type == "per_label":
         y_true = targets.detach().cpu().numpy()
         y_prob = logits.detach().cpu().numpy()
         best_f1, best_db = [], []
@@ -60,8 +60,8 @@ def f1_score_db_tuning(logits, targets, groups, average="micro", type="single"):
         best_db  = torch.tensor(best_db,  device=device, dtype=dtype)
         return best_f1, best_db
     
-    # ---------- return: per_class2 (sanity backoff) ----------
-    if type == "per_class2":
+    # ---------- return: per_label2 (sanity backoff) ----------
+    if type == "per_label2":
         MIN_POS = 10
         MIN_PRED_POS = 1
 
