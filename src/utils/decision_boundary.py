@@ -18,10 +18,7 @@ def best_f1_per_class_sklearn(logits: torch.Tensor,
                                                          y_score[:, c])
         f1 = 2 * precision * recall / (precision + recall + 1e-12)
         idx = np.argmax(f1)
-
         best_f1[c]  = f1[idx]
-        # precision_recall_curve 는 thresholds 길이가 n‑1 ⇒
-        # idx==len(thrs) 이면 threshold = 1.0 으로 간주
         best_thr[c] = thrs[idx] if idx < len(thrs) else 1.0
 
     return best_f1, best_thr
