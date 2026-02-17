@@ -102,7 +102,7 @@ def f1_score_db_tuning(logits, targets, groups, average="micro", type="single"):
         best_f1_t = torch.tensor(best_f1_list, device=device, dtype=dtype)
         best_db_t = torch.tensor(best_db_list, device=device, dtype=dtype)
 
-        print(f"[per_class sanity A] thr_global={thr_global:.4f} | "
+        print(f"[per_label sanity A] thr_global={thr_global:.4f} | "
               f"backed_off_lowpos={backed_off_lowpos}/{n_cls} | "
               f"backed_off_degen={backed_off_degen}/{n_cls}")
 
