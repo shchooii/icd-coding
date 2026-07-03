@@ -1,7 +1,7 @@
 ### Overview
 
 This repository provides the official implementation for the paper
-“Mitigating Imbalance in ICD Coding: A Comprehensive Evaluation of Loss Functions and Threshold Optimization.”
+“Mitigating Multi-label Imbalance in ICD Coding: A Comprehensive Evaluation of Loss Functions and Threshold Optimization.”
 
 It focuses on:
 
